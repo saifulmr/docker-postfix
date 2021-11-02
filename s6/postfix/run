@@ -83,6 +83,9 @@ postconf -e relay_domains="${RELAY_DOMAINS}"
 echo "postfix >> Setting smtp milter to ${RSPAMD_MILTER_TCP}"
 postconf -e smtpd_milters=inet:"${RSPAMD_MILTER_TCP}"
 
+postconf -e local_transport="error:local mail delivery is disabled"
+postconf -e transport_maps="hash:/etc/postfix/transport_maps"
+
 if [ -n "${RELAYHOST}" ]; then
   echo "postfix >> Setting relayhost to ${RELAYHOST}"
   postconf -e relayhost="${RELAYHOST}"
