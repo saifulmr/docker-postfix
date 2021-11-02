@@ -77,6 +77,9 @@ postconf -e mynetworks="${MYNETWORKS}"
 echo "postfix >> Setting message_size_limit to ${SIZELIMIT}"
 postconf -e message_size_limit="${SIZELIMIT}"
 
+echo "postfix >> Setting relay domains to ${RELAY_DOMAINS}"
+postconf -e relay_domains="${RELAY_DOMAINS}"
+
 if [ -n "${RELAYHOST}" ]; then
   echo "postfix >> Setting relayhost to ${RELAYHOST}"
   postconf -e relayhost="${RELAYHOST}"
