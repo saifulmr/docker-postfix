@@ -80,6 +80,9 @@ postconf -e message_size_limit="${SIZELIMIT}"
 echo "postfix >> Setting relay domains to ${RELAY_DOMAINS}"
 postconf -e relay_domains="${RELAY_DOMAINS}"
 
+echo "postfix >> Setting smtp milter to ${RSPAMD_MILTER_TCP}"
+postconf -e smtpd_milters=inet:"${RSPAMD_MILTER_TCP}"
+
 if [ -n "${RELAYHOST}" ]; then
   echo "postfix >> Setting relayhost to ${RELAYHOST}"
   postconf -e relayhost="${RELAYHOST}"
